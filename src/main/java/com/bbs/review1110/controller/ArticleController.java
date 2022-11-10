@@ -38,7 +38,7 @@ public class ArticleController {
 
         articleRepository.save(articleDTO.toEntity());
 
-        return "redirect:/article/list";
+        return "redirect:article/list";
     }
 
     @GetMapping("/detail/{id}")
@@ -48,11 +48,11 @@ public class ArticleController {
         if (!article.isEmpty()) {
             model.addAttribute("article", article.get());
 
-            return "/article/detail";
+            return "article/detail";
         } else {
             model.addAttribute("message", String.format("%d번 글은 없습니다.", id));
 
-            return "/article/error";
+            return "article/error";
         }
     }
 
@@ -62,7 +62,7 @@ public class ArticleController {
 
         model.addAttribute("articleList", articleList);
 
-        return "/article/list";
+        return "article/list";
     }
 
     @GetMapping("/update/{id}")
@@ -73,11 +73,11 @@ public class ArticleController {
         if (!article.isEmpty()) {
             model.addAttribute("article", article.get());
 
-            return "/article/update";
+            return "article/update";
         } else {
             model.addAttribute("message", String.format("%d번 글은 없습니다.", id));
 
-            return "/article/error";
+            return "article/error";
         }
     }
 
@@ -85,7 +85,7 @@ public class ArticleController {
     public String setUpdate(@PathVariable Long id, ArticleDTO articleDTO) {
         articleRepository.save(articleDTO.toEntity());
 
-        return String.format("redirect:/article/detail/%d", id);
+        return String.format("redirect:article/detail/%d", id);
     }
 
     @GetMapping("/delete/{id}")
@@ -99,6 +99,6 @@ public class ArticleController {
             articleRepository.delete(deleteArticle); //지울 entity를 매개변수로 넣어줌
         }
 
-        return "redirect:/article/list";
+        return "redirect:article/list";
     }
 }
