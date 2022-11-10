@@ -1,0 +1,29 @@
+{{>layouts/header}}
+
+
+<div class="container">
+    <h1>detail page</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Title</th>
+            <th scope="col">Contents</th>
+        </tr>
+        </thead>
+        {{#article}}
+            <tbody>
+            <tr>
+                <td>{{id}}</td>
+                <td>{{title}}</td>
+                <td>{{contents}}</td>
+            </tr>
+            </tbody>
+            </tr>
+            </tbody>
+        {{/article}}
+    </table>
+</div>
+
+{{>layouts/footer}}
