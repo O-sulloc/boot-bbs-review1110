@@ -6,8 +6,4 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class BootBbsReview1110ApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
-
 }

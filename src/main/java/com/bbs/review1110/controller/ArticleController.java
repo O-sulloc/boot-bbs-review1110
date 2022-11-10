@@ -50,6 +50,7 @@ public class ArticleController {
 
             return "/article/detail";
         } else {
+            model.addAttribute("message", String.format("%d번 글은 없습니다.", id));
 
             return "/article/error";
         }
