@@ -38,7 +38,7 @@ public class ArticleController {
 
         articleRepository.save(articleDTO.toEntity());
 
-        return "redirect:article/list";
+        return "redirect:/article/list";
     }
 
     @GetMapping("/detail/{id}")
@@ -85,7 +85,7 @@ public class ArticleController {
     public String setUpdate(@PathVariable Long id, ArticleDTO articleDTO) {
         articleRepository.save(articleDTO.toEntity());
 
-        return String.format("redirect:article/detail/%d", id);
+        return String.format("redirect:/article/detail/%d", id);
     }
 
     @GetMapping("/delete/{id}")
@@ -99,6 +99,6 @@ public class ArticleController {
             articleRepository.delete(deleteArticle); //지울 entity를 매개변수로 넣어줌
         }
 
-        return "redirect:article/list";
+        return "redirect:/article/list";
     }
 }
