@@ -1,0 +1,21 @@
+{{>layouts/header}}
+
+<form action="/article/update/{{id}}" method="post">
+    <div class="container align-middle">
+        <h1>update</h1>
+        {{#article}}
+            <div class="mb-3">
+                <input type="hidden" value="{{article.id}}"> <!-- id도 보내줘야하니까 hidden으로 숨기고-->
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" value="{{article.title}}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Contents</label>
+                <textarea rows="3" class="form-control" name="contents">{{article.contents}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {{/article}}
+    </div>
+</form>
+
+{{>layouts/footer}}

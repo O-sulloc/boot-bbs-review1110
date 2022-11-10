@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -48,9 +49,41 @@ public class ArticleController {
             model.addAttribute("article", article.get());
 
             return "/article/detail";
-        }else{
+        } else {
 
             return "/article/error";
         }
+    }
+
+    @GetMapping("/list")
+    public String getList(Model model) {
+        List<Article> articleList = articleRepository.findAll();
+
+        model.addAttribute("articleList", articleList);
+
+        return "/article/list";
+    }
+
+    @GetMapping("/update/{id}")
+    public String getUpdate(@PathVariable Long id, Model model) {
+        Optional<Article> article = articleRepository.findById(id);
+        model.addAttribute("article", article);
+
+        if (!article.isEmpty()) {
+            model.addAttribute("article", article.get());
+
+            return "/article/update";
+        } else {
+            model.addAttribute("message",String.format("%d번 글은 없습니다.", id));
+
+            return "/article/error";
+        }
+    }
+
+    @PostMapping("/update/{id}")
+    public String setUpdate(@PathVariable Long id, ArticleDTO articleDTO){
+        articleRepository.save(articleDTO.toEntity());
+
+        return String.format("redirect:/article/detail/%d",id);
     }
 }
