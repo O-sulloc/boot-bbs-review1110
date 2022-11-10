@@ -38,7 +38,7 @@ public class ArticleController {
 
         articleRepository.save(articleDTO.toEntity());
 
-        return "redirect:/article/add";
+        return "redirect:/article/list";
     }
 
     @GetMapping("/detail/{id}")
@@ -74,16 +74,30 @@ public class ArticleController {
 
             return "/article/update";
         } else {
-            model.addAttribute("message",String.format("%d번 글은 없습니다.", id));
+            model.addAttribute("message", String.format("%d번 글은 없습니다.", id));
 
             return "/article/error";
         }
     }
 
     @PostMapping("/update/{id}")
-    public String setUpdate(@PathVariable Long id, ArticleDTO articleDTO){
+    public String setUpdate(@PathVariable Long id, ArticleDTO articleDTO) {
         articleRepository.save(articleDTO.toEntity());
 
-        return String.format("redirect:/article/detail/%d",id);
+        return String.format("redirect:/article/detail/%d", id);
+    }
+
+    @GetMapping("/delete/{id}")
+    public String setDelete(@PathVariable Long id) {
+        log.info("delete request");
+
+        Article deleteArticle = articleRepository.findById(id).orElse(null);
+
+        if (deleteArticle != null) {
+            //지워
+            articleRepository.delete(deleteArticle); //지울 entity를 매개변수로 넣어줌
+        }
+
+        return "redirect:/article/list";
     }
 }
