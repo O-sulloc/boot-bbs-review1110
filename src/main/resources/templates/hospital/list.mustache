@@ -1,0 +1,55 @@
+{{>layouts/header}}
+
+<!-- Header start-->
+<header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+        <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Hospital List</span>
+        </a>
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+    </div>
+</header>
+<!-- header end-->
+
+<div class="container">
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">병원명</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">위치</th>
+            </tr>
+            </thead>
+            {{#hospitalList}}
+                <tbody>
+                <tr>
+                    <td>{{id}}</td>
+                    <td><a href="/hospital/detail/{{id}}">{{hospitalName}}</a></td>
+                    <td>{{phone}}</td>
+                    <td>{{fullAddress}}</td>
+                </tr>
+                </tbody>
+                </tr>
+                </tbody>
+            {{/hospitalList}}
+        </table>
+    </div>
+
+    <!-- pagination -->
+    <div class="container">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
+        </ul>
+    </nav>
+    </div>
+    <!-- pagination -->
+</div>
+{{>layouts/footer}}
