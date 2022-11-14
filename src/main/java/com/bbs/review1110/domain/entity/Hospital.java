@@ -36,10 +36,6 @@ public class Hospital {
     private Integer totalNumberOfBeds;
     private float totalAreaSize;
 
-    public String getHospitalName() {
-        return hospitalName;
-    }
-
     public Hospital(String openServiceName, Integer openLocalGovernmentCode, String managementNumber, LocalDateTime licenseDate, Integer businessStatus, Integer businessStatusCode, String phone, String fullAddress, String roadNameAddress, String hospitalName, String businessTypeName, Integer healthcareProviderCount, Integer patientRoomCount, Integer totalNumberOfBeds, float totalAreaSize) {
         this.openServiceName = openServiceName;
         this.openLocalGovernmentCode = openLocalGovernmentCode;
@@ -57,4 +53,5 @@ public class Hospital {
         this.totalNumberOfBeds = totalNumberOfBeds;
         this.totalAreaSize = totalAreaSize;
     }
+
 }
