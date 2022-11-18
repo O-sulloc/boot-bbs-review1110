@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Hospital {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; //int는 Integer Long은 bigint
     private String openServiceName;
     private Integer openLocalGovernmentCode;
@@ -54,4 +52,7 @@ public class Hospital {
         this.totalAreaSize = totalAreaSize;
     }
 
+    public static HospitalResponse of(Hospital hospital){
+        return new HospitalResponse(hospital.getId(), hospital.getHospitalName(), hospital.getRoadNameAddress());
+    }
 }

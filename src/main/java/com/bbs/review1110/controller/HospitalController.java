@@ -35,6 +35,7 @@ public class HospitalController {
         return "hospital/list";
     }
 
+
     @GetMapping("/detail/{id}")
     public String getOne(@PathVariable Integer id, Model model) {
         Optional<Hospital> hospital = hospitalRepository.findById(id);
