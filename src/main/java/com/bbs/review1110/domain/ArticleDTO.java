@@ -2,10 +2,12 @@ package com.bbs.review1110.domain;
 
 import com.bbs.review1110.domain.entity.Article;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
+@Builder
 public class ArticleDTO {
     private Long id; //update할 때 필요, toEntity에도 추가해줘
 
