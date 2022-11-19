@@ -17,7 +17,7 @@ public class HospitalService {
         this.hospitalRepository = hospitalRepository;
     }
 
-    public ResponseEntity<HospitalResponse> getInfo(Integer id){
+    public HospitalResponse getInfo(Integer id){
         Optional<Hospital> optHospital = hospitalRepository.findById(id);
         Hospital hospital = optHospital.get(); // hospital은 business status code를 받고 (13)
 
@@ -42,6 +42,6 @@ public class HospitalService {
          */
 
 
-        return ResponseEntity.ok().body(hospitalResponse);
+        return hospitalResponse;
     }
 }

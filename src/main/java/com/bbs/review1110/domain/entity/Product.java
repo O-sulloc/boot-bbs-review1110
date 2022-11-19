@@ -12,6 +12,7 @@ public class Product {
     private Long number;
 
     @Column(nullable = false) //not null 제약 조건 줌
+    //@Column(name = "name100") //db에서 컬럼명을 따로 주고 싶을 때는 이렇게 지정해줄 수 있음.
     private String name;
 
     @Column(nullable = false)

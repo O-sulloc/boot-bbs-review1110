@@ -32,6 +32,6 @@ public class HospitalRestController {
 //        return ResponseEntity.ok().body(Hospital.of(hospital.get()));
         //이 로직은 이제 서비스에서 담당하기 때문에 필요 없음
 
-        return hospitalService.getInfo(id); //service에서 받은 것만 리턴해주면 끝
+        return ResponseEntity.ok().body(hospitalService.getInfo(id)); //service에서 받은 것만 리턴해주면 끝
     }
 }

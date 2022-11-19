@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
+@Builder
 public class HospitalResponse {
     private Integer id; //int는 Integer Long은 bigint
     private String roadNameAddress;
