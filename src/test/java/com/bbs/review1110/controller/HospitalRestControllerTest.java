@@ -42,7 +42,7 @@ class HospitalRestControllerTest {
         given(hospitalService.getInfo(2321)).willReturn(hospitalResponse);
 
         int hospitalId = 2321;
-        String url = String.format("/api/v1/hospitals/%d",hospitalId);
+        String url = String.format("/api/v1/hospital/%d",hospitalId);
 
         mockMvc.perform(get(url)) //예외처리
                 .andExpect(status().isOk())
