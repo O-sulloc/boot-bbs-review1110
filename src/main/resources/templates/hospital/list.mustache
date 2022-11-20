@@ -7,8 +7,8 @@
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
             <span class="fs-4">Hospital List</span>
         </a>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        <form action="/hospital/search" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+            <input type="search" name="keyword" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
     </div>
 </header>
@@ -32,7 +32,8 @@
                     <td>{{id}}</td>
                     <td><a href="/hospital/detail/{{id}}">{{hospitalName}}</a></td>
                     <td>{{phone}}</td>
-                    <td>{{fullAddress}}</td>
+<!--                    <td>{{fullAddress}}</td>-->
+                    <td>{{roadNameAddress}}</td>
                 </tr>
                 </tbody>
                 </tr>
@@ -45,8 +46,14 @@
     <div class="container">
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
+            {{#keyword}}
+                <li class="page-item"><a class="page-link" href="?keyword={{keyword}}&page={{previous}}">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="?keyword={{keyword}}&page={{next}}">Next</a></li>
+            {{/keyword}}
+            {{^keyword}}
+                <li class="page-item"><a class="page-link" href="?page={{previous}}">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{next}}">Next</a></li>
+            {{/keyword}}
         </ul>
     </nav>
     </div>

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,9 +40,19 @@ public class HospitalController {
     @GetMapping("/detail/{id}")
     public String getOne(@PathVariable Integer id, Model model) {
         Optional<Hospital> hospital = hospitalRepository.findById(id);
-        model.addAttribute("hospital",hospital.get());
+        model.addAttribute("hospital", hospital.get());
 
         return "hospital/detail";
+    }
+
+    @GetMapping("/search")
+    public String getHosByRoadName(@RequestParam String keyword, Pageable pageable, Model model) {
+        Page<Hospital> hospitalPage = hospitalRepository.findByRoadNameAddressContaining(keyword, pageable);
+        model.addAttribute("hospitalList", hospitalPage);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("keyword",keyword);
+        return "hospital/list";
     }
 
 }
