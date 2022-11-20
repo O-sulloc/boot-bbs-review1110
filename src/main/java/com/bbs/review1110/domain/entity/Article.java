@@ -26,8 +26,13 @@ public class Article {
         this.contents = contents;
     }
 
-    public static ArticleDTO ToDTO(Article article){
+    public static ArticleDTO ToDTO(Article article) {
         //service 에서 article을 articleDTO로 형변환하는 메서드
         return new ArticleDTO(article.getId(), article.getTitle(), article.getContents());
+    }
+
+    public static ArticleResponse ToDTO2(Article article) {
+
+        return new ArticleResponse(article.getId(), article.getTitle(), article.getContents());
     }
 }
